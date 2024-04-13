@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/popcorn.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./main.js"></script>
+    <script>
+      const html = document.querySelector("html");
+      const isLightOrAuto =
+        localStorage.getItem("hs_theme") === "light" ||
+        (localStorage.getItem("hs_theme") === "auto" &&
+          !window.matchMedia("(prefers-color-scheme: dark)").matches);
+      const isDarkOrAuto =
+        localStorage.getItem("hs_theme") === "dark" ||
+        (localStorage.getItem("hs_theme") === "auto" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      if (isLightOrAuto && html.classList.contains("dark"))
+        html.classList.remove("dark");
+      else if (isDarkOrAuto && html.classList.contains("light"))
+        html.classList.remove("light");
+      else if (isDarkOrAuto && !html.classList.contains("dark"))
+        html.classList.add("dark");
+      else if (isLightOrAuto && !html.classList.contains("light"))
+        html.classList.add("light");
+    </script>
+    <title>Pixel</title>
+  </head>
+  <body class="font-body">
+    <nav
+      class="absolute top-0 flex w-full flex-row items-center justify-between gap-3 bg-black bg-opacity-30 px-5 py-6 text-lg shadow-md md:flex-row md:px-12"
+    >
+      <div class="flex">
+        <a href="/" class="">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="size-14"
+          >
+            <path
+              fill="#ffffff"
+              d="M2 2h20v20H2zm2 2v4h4v4H4v4h4v4h4v-4h4v4h4v-4h-4v-4h4V8h-4V4h-4v4H8V4zm8 8H8v4h4zm0-4v4h4V8z"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <h2 class="text-white">Search</h2>
+        <button
+          type="button"
+          class="inline-flex size-[65px] items-center gap-x-2 rounded-lg border border-transparent px-4 py-3 disabled:pointer-events-none disabled:opacity-50"
+          data-hs-overlay="#hs-focus-management-modal"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-search"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+        </button>
+
+        <div
+          id="hs-focus-management-modal"
+          class="hs-overlay pointer-events-none fixed start-0 top-0 z-[80] hidden size-full overflow-y-auto overflow-x-hidden"
+        >
+          <div
+            class="m-3 mt-0 opacity-0 transition-all ease-out hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 sm:mx-auto sm:w-full sm:max-w-lg"
+          >
+            <div
+              class="pointer-events-auto flex flex-col rounded-xl border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:shadow-slate-700/[.7]"
+            >
+              <div
+                class="flex items-center justify-between border-b px-4 py-3 dark:border-gray-700"
+              >
+                <h3 class="font-bold text-gray-800 dark:text-white">
+                  Search movies, TV Shows..
+                </h3>
+                <button
+                  type="button"
+                  class="flex size-7 items-center justify-center rounded-full border border-transparent text-sm font-semibold text-gray-800 hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50 dark:text-white dark:hover:bg-gray-700"
+                  data-hs-overlay="#hs-focus-management-modal"
+                >
+                  <span class="sr-only">Close</span>
+                </button>
+              </div>
+
+              <div class="overflow-y-auto p-4">
+                <input
+                  type="text"
+                  class="block w-full rounded-lg border-gray-200 px-4 py-3 text-sm focus:ring-gray-900 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-400"
+                  placeholder="Dune"
+                  autofocus=""
+                  id="search-input"
+                />
+              </div>
+              <div
+                class="flex items-center justify-end gap-x-2 border-t px-4 py-3 dark:border-gray-700"
+              >
+                <button
+                  type="button"
+                  class="inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-700 dark:bg-slate-900 dark:text-white dark:hover:bg-gray-800"
+                  data-hs-overlay="#hs-focus-management-modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="search-button inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-black px-3 py-2 text-sm font-semibold text-white hover:bg-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-700 dark:bg-slate-900 dark:hover:bg-gray-800"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          type="button"
+          class="hs-dark-mode group block flex items-center font-medium text-white hs-dark-mode-active:hidden"
+          data-hs-theme-click-value="dark"
+        >
+          <svg
+            class="size-6 flex-shrink-0"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="hs-dark-mode group flex hidden items-center font-medium text-white hs-dark-mode-active:block"
+          data-hs-theme-click-value="light"
+        >
+          <svg
+            class="size-6 flex-shrink-0"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <main
+      class="flex h-screen flex-col justify-center bg-cover p-12 pt-24 text-left"
+    >
+      <h1 class="main_h1 mb-4 text-6xl font-extrabold text-white"></h1>
+      <div class="mb-5 flex gap-3">
+        <div class="flex flex-col gap-4">
+          <span class="main_span text-xl font-bold text-white"></span>
+          <span class="main_rating text-xl font-bold text-white"></span>
+        </div>
+      </div>
+      <p class="main_p text-xl text-white lg:max-w-[60%]"></p>
+
+      <button
+        class="watch-button mt-5 flex h-14 w-24 items-center justify-center gap-x-2 rounded-lg border border-transparent bg-gray-100 px-4 py-3 text-lg font-semibold text-gray-800 hover:bg-gray-200 disabled:pointer-events-none disabled:opacity-50 dark:bg-white/20 dark:text-white dark:hover:bg-white/30 dark:hover:text-white"
+      ></button>
+    </main>
+  </body>
+</html>

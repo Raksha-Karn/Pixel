@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/popcorn.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title></title>
+  </head>
+  <body>
+    <iframe
+      src=""
+      frameborder="0"
+      id="watch"
+      class="h-screen w-full"
+      allow="fullscreen"
+    ></iframe>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const movieId = urlParams.get("id");
+      document.title = movieId.toUpperCase();
+
+      if (movieId) {
+        const iframe = document.querySelector("#watch");
+        iframe.src = `https://vidsrc.to/embed/movie/${movieId}`;
+      }
+    </script>
+  </body>
+</html>

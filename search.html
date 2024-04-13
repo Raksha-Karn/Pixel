@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/popcorn.png" type="image/x-icon" />
+
+    <script type="module" src="./search.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <title></title>
+  </head>
+  <body class="font-body flex flex-col bg-[#F4F4F4] pt-5 dark:bg-[#121212]">
+    <h1 class="search-result text-center text-3xl font-black"></h1>
+    <div class="mainDiv flex flex-wrap justify-center gap-8 p-10">
+      <template id="template">
+        <div
+          class="flex size-full flex-wrap items-center justify-center lg:size-[25%]"
+        >
+          <a
+            class="group flex flex-col overflow-hidden rounded-xl bg-gray-200 shadow-sm transition hover:shadow-lg dark:bg-slate-900 dark:shadow-slate-700/[.7]"
+            href=""
+          >
+            <div
+              class="image relative flex items-center justify-center overflow-hidden rounded-t-xl pt-[50%] sm:pt-[50%] lg:pt-[80%]"
+            >
+              <div
+                class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-30"
+              ></div>
+              <button
+                class="translate-[-50%,-50%] absolute left-[40%] top-[50%] transform opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:left-[44%] lg:left-[38%]"
+              >
+                <img class="size-16 md:size-20" src="/play.png" alt="" />
+              </button>
+            </div>
+            <div class="size-full p-4 md:p-5">
+              <h1
+                class="truncate text-lg font-bold text-gray-800 dark:text-white"
+              ></h1>
+              <p class="mt-1 line-clamp-2 text-gray-500 dark:text-gray-400"></p>
+            </div>
+          </a>
+        </div>
+      </template>
+    </div>
+  </body>
+</html>
